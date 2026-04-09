@@ -1,9 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Navbar from './components/navbar'
-import Home from './pages/Home'
-import About from './pages/About'
-import Sections from './pages/Sections'
-import Contact from './pages/Contact'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Sections from "./pages/Sections";
+import Contact from "./pages/Contact";
+import Primary from "./pages/Primary";
+import Secondary from "./pages/Secondary";
 
 function App() {
   return (
@@ -14,9 +16,11 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/sections" element={<Sections />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/sections/primary" element={<Primary />} />
+        <Route path="/sections/secondary" element={<Secondary />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

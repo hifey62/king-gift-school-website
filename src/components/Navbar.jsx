@@ -1,5 +1,6 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,20 +66,20 @@ const Navbar = () => {
               <div className="hidden group-hover:block absolute top-full left-0 bg-white p-2 border border-gray-100 shadow-md rounded-lg">
                 <ul>
                   <li>
-                    <a
-                      href="/sections/primary"
-                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md transition-colors duration-150"
+                    <Link
+                      to="/sections/primary"
+                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-wine rounded-md transition-colors duration-150"
                     >
                       Primary
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a
-                      href="/sections/secondary"
-                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md transition-colors duration-150"
+                    <Link
+                      to="/sections/secondary"
+                      className="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-wine rounded-md transition-colors duration-150"
                     >
                       Secondary
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

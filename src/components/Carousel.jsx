@@ -63,20 +63,30 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full h-[90vh] overflow-hidden">
-      <img
-        src={slides[current].image}
-        alt={slides[current].title}
-        className="w-full h-full object-cover object-left"
-      />
+      {/* Slides container */}
+      <div
+        className="flex h-full transition-transform duration-800 ease-in-out"
+        style={{ transform: `translateX(-${current * 100}%)` }}
+      >
+        {slides.map((slide, index) => (
+          <div key={index} className="min-w-full h-full shrink-0">
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
 
-      <div className="absolute inset-0 bg-black/40 flex flex-col justify-end text-white px-8 md:px-24 pb-16 md:pb-44">
+      <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-start text-white px-16 md:px-24">
         {/* Title */}
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold max-w-4xl leading-tight">
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-8xl font-bold leading-tight">
           {displayedText}
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-4 text-lg text-white/80 max-w-xl">
+        <p className="mt-4 text-lg text-white/80 max-w-xl text-center">
           {slides[current].subtitle}
         </p>
 

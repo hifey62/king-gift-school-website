@@ -6,13 +6,13 @@
   --color-wine-light: #8B2535;
   --color-wine-dark: #4A1020;
   --color-gold: #C9A84C;
-  --color-cream: #FAF7F5;
+  --color-cream:  #FFFFFF;
 
   --font-serif: 'Cormorant Garamond', serif;
   --font-sans: 'Jost', sans-serif;
 }
 
 body { 
-  background-color: #FAF7F5;
+  background-color:  #FFFFFF;
   font-family: 'Jost', sans-serif;
 }
