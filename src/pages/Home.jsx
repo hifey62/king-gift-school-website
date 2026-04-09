@@ -1,4 +1,4 @@
-import Carousel from "../components/carousel";
+import Carousel from "../components/Carousel";
 import Stats from "../components/Stats";
 import Welcome from "../components/Welcome";
 import Gallery from "../components/Gallery";
