@@ -1,10 +1,13 @@
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
 const images = [
-  { src: '/src/assets/kgsStu.jpg', label: 'Art Class' },
-  { src: '/src/assets/kgsStu1.jpg', label: 'Science Lab' },
-  { src: '/src/assets/kgsStu2.jpg', label: 'Sports Day' },
-  { src: '/src/assets/kgsStu.jpg', label: 'Graduation' },
-  { src: '/src/assets/kgsStu1.jpg', label: 'Music Room' },
-  { src: '/src/assets/kgsStu2.jpg', label: 'Library' },
+  { src: img1, label: 'Art Class' },
+  { src: img2, label: 'Science Lab' },
+  { src: img3, label: 'Sports Day' },
+  { src: img1, label: 'Graduation' },
+  { src: img1, label: 'Music Room' },
+  { src: img3, label: 'Library' },
 ]
 
 const Gallery = () => {
