@@ -36,7 +36,7 @@ const About = () => {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/30 z-0" />
             <img
-              src="/src/assets/kgsStu1.jpg"
+              src={img2}
               alt="Our Story"
               className="relative z-10 w-full h-[500px] object-cover"
             />
