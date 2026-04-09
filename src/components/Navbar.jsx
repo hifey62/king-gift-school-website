@@ -1,6 +1,7 @@
 import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/kingGiftlogo.jpg";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ const Navbar = () => {
         {/* LOGO AREA — flex + gap instead of absolute positioning */}
         <a href="/" className="flex items-center gap-3 no-underline group">
           <img
-            src="src/assets/kingGiftlogo.jpg"
+            src={Logo}
             alt="King Gift School Logo"
             className="w-12 h-12 rounded-full object-cover border border-gray-200"
           />

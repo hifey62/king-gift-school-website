@@ -1,10 +1,16 @@
 import { BookOpen, Users, Clock, Award } from 'lucide-react'
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
+
 
 const subjects = [
   'English Language', 'Mathematics', 'Basic Science',
   'Social Studies', 'Civic Education', 'Cultural & Creative Arts',
   'Physical & Health Education', 'Computer Studies', 'Yoruba Language',
 ]
+
+
 
 const classes = [
   { level: 'Primary 1', age: '6 — 7 years', size: '25 students' },
@@ -16,9 +22,9 @@ const classes = [
 ]
 
 const teachers = [
-  { name: 'Mrs. F. Adeleke', role: 'Head of Primary', image: '/src/assets/kgsStu.jpg' },
-  { name: 'Mr. K. Babatunde', role: 'Primary 4 — 6 Teacher', image: '/src/assets/kgsStu1.jpg' },
-  { name: 'Mrs. T. Ogundimu', role: 'Primary 1 — 3 Teacher', image: '/src/assets/kgsStu2.jpg' },
+  { name: 'Mrs. F. Adeleke', role: 'Head of Primary', image:  img1  },
+  { name: 'Mr. K. Babatunde', role: 'Primary 4 — 6 Teacher', image: img2  },
+  { name: 'Mrs. T. Ogundimu', role: 'Primary 1 — 3 Teacher', image:  img3  },
 ]
 
 const stats = [
@@ -35,7 +41,7 @@ const Primary = () => {
       {/* Hero Banner */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         <img
-          src="/src/assets/kgsStu.jpg"
+          src={img1}
           alt="Primary Section"
           className="w-full h-full object-cover"
         />
@@ -84,7 +90,7 @@ const Primary = () => {
           <div className="relative">
             <div className="absolute -top-4 -right-4 w-full h-full border-2 border-gold/30 z-0" />
             <img
-              src="/src/assets/kgsStu1.jpg"
+              src={img2}
               alt="Primary Students"
               className="relative z-10 w-full h-112.5 object-cover"
             />

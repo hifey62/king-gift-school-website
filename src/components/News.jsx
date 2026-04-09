@@ -1,29 +1,30 @@
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
+
 const news = [
   {
-    image: "/src/assets/kgsStu.jpg",
+    image: img1,
     date: "March 15, 2025",
     category: "Academic",
     title: "King Gift Students Excel in National Mathematics Competition",
-    excerpt:
-      "Our students brought home 3 gold medals and 5 silver medals at the National Mathematics Olympiad.",
+    excerpt: "Our students brought home 3 gold medals and 5 silver medals at the National Mathematics Olympiad.",
   },
   {
-    image: "/src/assets/kgsStu1.jpg",
+    image: img2,
     date: "March 8, 2025",
     category: "Admissions",
     title: "Admissions Now Open for the 2025/2026 Academic Session",
-    excerpt:
-      "We are pleased to announce that applications are now open for new students. Early applications are encouraged.",
+    excerpt: "We are pleased to announce that applications are now open for new students. Early applications are encouraged.",
   },
   {
-    image: "/src/assets/kgsStu2.jpg",
+    image: img3,
     date: "February 28, 2025",
     category: "Events",
     title: "Annual Cultural Day Celebration — A Day to Remember",
-    excerpt:
-      "Students showcased the rich diversity of Nigerian culture through music, dance, food and art.",
+    excerpt: "Students showcased the rich diversity of Nigerian culture through music, dance, food and art.",
   },
-];
+]
 const News = () => {
   return (
     <section className="py-24 bg-gray-50">

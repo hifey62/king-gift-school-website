@@ -1,15 +1,18 @@
 import { GraduationCap, BookOpen, Award, Users } from 'lucide-react'
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
 
 const sections = [
   {
-    image: '/src/assets/kgsStu.jpg',
+    image: img1 ,
     title: 'Primary Section',
     grades: 'Grade 1 — Grade 6',
     description: 'Our primary section builds a strong academic foundation through engaging, child-centred learning. We nurture curiosity, creativity and confidence in every young learner.',
     href: '/sections/primary'
   },
   {
-    image: '/src/assets/kgsStu1.jpg',
+    image:  img2 ,
     title: 'Secondary Section',
     grades: 'Grade 7 — Grade 12',
     description: 'Our secondary section prepares students for national examinations and beyond. With experienced teachers and a rigorous curriculum, we set students up for lifelong success.',
@@ -31,7 +34,7 @@ const Sections = () => {
       {/* Hero Banner */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         <img
-          src="/src/assets/kgsStu2.jpg"
+          src={img3}
           alt="Sections"
           className="w-full h-full object-cover"
         />

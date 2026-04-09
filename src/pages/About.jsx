@@ -1,9 +1,12 @@
 import { Shield, BookOpen } from 'lucide-react'
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
 
 const team = [
-  { name: 'Mr. A. Johnson', role: 'Principal', image: '/src/assets/kgsStu.jpg' },
-  { name: 'Mrs. B. Adeyemi', role: 'Vice Principal', image: '/src/assets/kgsStu1.jpg' },
-  { name: 'Mr. C. Okafor', role: 'Head of Academics', image: '/src/assets/kgsStu2.jpg' },
+  { name: 'Mr. A. Johnson', role: 'Principal', image:  img1  },
+  { name: 'Mrs. B. Adeyemi', role: 'Vice Principal', image:  img2 },
+  { name: 'Mr. C. Okafor', role: 'Head of Academics', image: img3 },
 ]
 
 const About = () => {
@@ -13,7 +16,7 @@ const About = () => {
       {/* Hero Banner */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         <img
-          src="/src/assets/kgsStu.jpg"
+          src={img1}
           alt="About King Gift School"
           className="w-full h-full object-cover"
         />

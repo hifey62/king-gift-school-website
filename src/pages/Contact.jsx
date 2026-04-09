@@ -1,5 +1,6 @@
 import Contact from "../components/contact"
 
+
 const ContactPage = () => {
   return (
     <div>

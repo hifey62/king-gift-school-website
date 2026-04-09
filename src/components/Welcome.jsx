@@ -1,3 +1,5 @@
+import img1 from '../assets/kgsStu.jpg'
+
 const Welcome = () => {
   return (
     <section className="py-24 px-8">
@@ -28,7 +30,7 @@ const Welcome = () => {
           {/* Decorative gold border */}
           <div className="absolute -top-4 -right-4 w-full h-full border-2 border-gold/30 z-0" />
           <img
-            src="/src/assets/kgsStu.jpg"
+            src={img1}
             alt="Students at King Gift School"
             className="relative z-10 w-full h-[500px] object-cover"
           />

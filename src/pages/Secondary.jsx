@@ -1,4 +1,7 @@
 import { BookOpen, Users, Clock, Award } from 'lucide-react'
+import img1 from '../assets/kgsStu.jpg'
+import img2 from '../assets/kgsStu1.jpg'
+import img3 from '../assets/kgsStu2.jpg'
 
 const subjects = [
   'English Language', 'Mathematics', 'Physics',
@@ -17,9 +20,9 @@ const classes = [
 ]
 
 const teachers = [
-  { name: 'Mr. D. Fashola', role: 'Head of Secondary', image: '/src/assets/kgsStu.jpg' },
-  { name: 'Mrs. R. Nwosu', role: 'Head of Sciences', image: '/src/assets/kgsStu1.jpg' },
-  { name: 'Mr. S. Afolabi', role: 'Head of Humanities', image: '/src/assets/kgsStu2.jpg' },
+  { name: 'Mr. D. Fashola', role: 'Head of Secondary', image: img1 },
+  { name: 'Mrs. R. Nwosu', role: 'Head of Sciences', image:  img2  },
+  { name: 'Mr. S. Afolabi', role: 'Head of Humanities', image: img3  },
 ]
 
 const stats = [
@@ -70,7 +73,7 @@ const Secondary = () => {
           <div className="relative">
             <div className="absolute -top-4 -left-4 w-full h-full border-2 border-gold/30 z-0" />
             <img
-              src="/src/assets/kgsStu1.jpg"
+              src={img2}
               alt="Secondary Students"
               className="relative z-10 w-full h-[450px] object-cover"
             />
