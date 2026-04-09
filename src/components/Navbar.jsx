@@ -2,6 +2,7 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/kingGiftlogo.jpg";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,13 +16,12 @@ const Navbar = () => {
       {/* h-18 = fixed height so navbar never shifts */}
       <nav className="max-w-8xl mx-auto px-8 h-18 flex justify-between items-center py-4">
         {/* LOGO AREA — flex + gap instead of absolute positioning */}
-        <a href="/" className="flex items-center gap-3 no-underline group">
+        <Link to="/" className="flex items-center gap-3 no-underline group">
           <img
             src={Logo}
             alt="King Gift School Logo"
             className="w-12 h-12 rounded-full object-cover border border-gray-200"
           />
-          {/* flex-col to stack school name and tagline vertically */}
           <div className="flex flex-col">
             <span className="text-[15px] font-medium text-gray-900 leading-tight">
               King Gift School
@@ -30,39 +30,38 @@ const Navbar = () => {
               Raising Excellent & Godly Leaders
             </span>
           </div>
-        </a>
+        </Link>
 
         {/* NAV LINKS */}
         {/* gap-1 not gap-8 — links have internal padding, gap just separates them slightly */}
         <div className="hidden md:flex items-center gap-6">
           <ul className="flex items-center gap-8 list-none">
             <li>
-              <a
-                href="/"
-                className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md transition-colors duration-150"
+              <Link
+                to="/"
+                onClick={() => setIsOpen(false)}
+                className="font-serif text-5xl font-bold tracking-wide text-cream hover:text-gold transition-colors"
               >
                 Home
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/about"
-                className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md transition-colors duration-150"
+              <Link
+                to="/about"
+                onClick={() => setIsOpen(false)}
+                className="font-serif text-5xl font-bold tracking-wide text-cream hover:text-gold transition-colors"
               >
                 About
-              </a>
+              </Link>
             </li>
             <li className="group relative">
-              <a
-                href="/sections"
-                className=" flex items-center gap-1 text-sm text-gray-500 hover:text-gray-900 hover:bg-gray-100 px-4 py-2 rounded-lg transition-colors duration-150 "
+              <Link
+                to="/sections"
+                onClick={() => setIsOpen(false)}
+                className="font-serif text-5xl font-bold tracking-wide text-cream hover:text-gold transition-colors"
               >
                 Sections
-                <ChevronDown
-                  size={14}
-                  className="transition-transform duration-200 group-hover:rotate-180"
-                />
-              </a>
+              </Link>
 
               <div className="hidden group-hover:block absolute top-full left-0 bg-white p-2 border border-gray-100 shadow-md rounded-lg">
                 <ul>
@@ -86,12 +85,13 @@ const Navbar = () => {
               </div>
             </li>
             <li>
-              <a
-                href="/contact"
-                className="px-4 py-2 text-sm text-gray-500 hover:bg-gray-100 hover:text-gray-900 rounded-md transition-colors duration-150"
+              <Link
+                to="/contact"
+                onClick={() => setIsOpen(false)}
+                className="font-serif text-5xl font-bold tracking-wide text-cream hover:text-gold transition-colors"
               >
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
 
