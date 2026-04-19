@@ -6,6 +6,7 @@ import Sections from "./pages/Sections";
 import Contact from "./pages/Contact";
 import Primary from "./pages/Primary";
 import Secondary from "./pages/Secondary";
+import Admissions from "./pages/Admissions";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/sections/primary" element={<Primary />} />
         <Route path="/sections/secondary" element={<Secondary />} />
+        <Route path="/admissions" element={<Admissions/>}/>
       </Routes>
     </BrowserRouter>
   );
