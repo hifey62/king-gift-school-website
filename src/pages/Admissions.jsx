@@ -1,65 +1,95 @@
-import { useState } from 'react'
-import emailjs from '@emailjs/browser'
-import img1 from '../assets/kgsStu.jpg'
+import { useState } from "react";
+import emailjs from "@emailjs/browser";
+import img1 from "../assets/kgsStu.jpg";
 
-const SERVICE_ID = 'service_6th9zgu'
-const TEMPLATE_ID = 'template_c97yjzp'
-const PUBLIC_KEY = 'XSUMjFgoZQeeIC_o5'
+const SERVICE_ID = "service_6th9zgu";
+const TEMPLATE_ID = "template_c97yjzp";
+const PUBLIC_KEY = "XSUMjFgoZQeeIC_o5";
+const SHEET_URL =
+  "https://script.google.com/macros/s/AKfycbzQX_1yhbV2j8u3qlgW523dWAYQMC0XdyNMkRYCJCihaPqN1O0yCZ2auYryYwqLlmKDnQ/exec";
 
 const steps = [
-  { number: '01', title: 'Submit Application', description: 'Fill out the admission form below with accurate information.' },
-  { number: '02', title: 'Review', description: 'Our admissions team reviews your application within 3 working days.' },
-  { number: '03', title: 'Assessment', description: 'Shortlisted candidates are invited for an entrance assessment.' },
-  { number: '04', title: 'Admission Offer', description: 'Successful candidates receive an official admission offer letter.' },
-]
+  {
+    number: "01",
+    title: "Submit Application",
+    description: "Fill out the admission form below with accurate information.",
+  },
+  {
+    number: "02",
+    title: "Review",
+    description:
+      "Our admissions team reviews your application within 3 working days.",
+  },
+  {
+    number: "03",
+    title: "Assessment",
+    description:
+      "Shortlisted candidates are invited for an entrance assessment.",
+  },
+  {
+    number: "04",
+    title: "Admission Offer",
+    description:
+      "Successful candidates receive an official admission offer letter.",
+  },
+];
 
 const Admissions = () => {
   const [formData, setFormData] = useState({
-    student_name: '',
-    email: '',
-    date_of_birth: '',
-    place_of_birth: '',
-    home_town: '',
-    lga: '',
-    state_of_origin: '',
-    nationality: '',
-    present_school: '',
-    present_class: '',
-  })
+    student_name: "",
+    email: "",
+    date_of_birth: "",
+    place_of_birth: "",
+    home_town: "",
+    lga: "",
+    state_of_origin: "",
+    nationality: "",
+    present_school: "",
+    present_class: "",
+  });
 
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setStatus('loading')
+    e.preventDefault();
+    setStatus("loading");
 
     try {
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY)
-      setStatus('success')
+      // Send email via EmailJS AND send to Google Sheet at the same time
+      await Promise.all([
+        emailjs.send(SERVICE_ID, TEMPLATE_ID, formData, PUBLIC_KEY),
+        fetch(SHEET_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }),
+      ]);
+
+      setStatus("success");
       setFormData({
-        student_name: '',
-        email: '',
-        date_of_birth: '',
-        place_of_birth: '',
-        home_town: '',
-        lga: '',
-        state_of_origin: '',
-        nationality: '',
-        present_school: '',
-        present_class: '',
-      })
+        student_name: "",
+        email: "",
+        date_of_birth: "",
+        place_of_birth: "",
+        home_town: "",
+        lga: "",
+        state_of_origin: "",
+        nationality: "",
+        present_school: "",
+        present_class: "",
+      });
     } catch (error) {
-      setStatus('error')
+      setStatus("error");
     }
-  }
+  };
 
   return (
     <div>
-
       {/* Hero Banner */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         <img
@@ -70,11 +100,17 @@ const Admissions = () => {
         <div className="absolute inset-0 bg-wine-dark/80 flex flex-col justify-center items-center text-white text-center px-8">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-[1px] bg-gold" />
-            <span className="text-gold text-xs tracking-[0.4em] uppercase">Join Us</span>
+            <span className="text-gold text-xs tracking-[0.4em] uppercase">
+              Join Us
+            </span>
             <div className="w-12 h-[1px] bg-gold" />
           </div>
-          <h1 className="font-serif text-5xl md:text-7xl font-bold">Admissions</h1>
-          <p className="mt-4 text-white/60 text-sm tracking-widest uppercase">2025 / 2026 Academic Session</p>
+          <h1 className="font-serif text-5xl md:text-7xl font-bold">
+            Admissions
+          </h1>
+          <p className="mt-4 text-white/60 text-sm tracking-widest uppercase">
+            2025 / 2026 Academic Session
+          </p>
         </div>
       </div>
 
@@ -83,16 +119,24 @@ const Admissions = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-[1px] bg-gold" />
-            <span className="text-gold text-xs tracking-[0.4em] uppercase">The Process</span>
+            <span className="text-gold text-xs tracking-[0.4em] uppercase">
+              The Process
+            </span>
           </div>
-          <h2 className="font-serif text-5xl text-wine mb-12">What Happens Next</h2>
+          <h2 className="font-serif text-5xl text-wine mb-12">
+            What Happens Next
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col gap-4 group">
-                <span className="font-serif text-5xl font-bold text-gold/30 group-hover:text-gold transition-colors duration-300">{step.number}</span>
+                <span className="font-serif text-5xl font-bold text-gold/30 group-hover:text-gold transition-colors duration-300">
+                  {step.number}
+                </span>
                 <div className="w-8 h-[2px] bg-gold/30 group-hover:w-16 group-hover:bg-gold transition-all duration-300" />
                 <h3 className="font-serif text-xl text-wine">{step.title}</h3>
-                <p className="text-sm text-gray-400 leading-relaxed">{step.description}</p>
+                <p className="text-sm text-gray-400 leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             ))}
           </div>
@@ -104,32 +148,45 @@ const Admissions = () => {
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-12 h-[1px] bg-gold" />
-            <span className="text-gold text-xs tracking-[0.4em] uppercase">Apply Now</span>
+            <span className="text-gold text-xs tracking-[0.4em] uppercase">
+              Apply Now
+            </span>
           </div>
           <h2 className="font-serif text-5xl text-wine mb-4">Admission Form</h2>
-          <p className="text-gray-400 text-sm mb-12">All fields are required. Please ensure all information is accurate before submitting.</p>
+          <p className="text-gray-400 text-sm mb-12">
+            All fields are required. Please ensure all information is accurate
+            before submitting.
+          </p>
 
           {/* Success Message */}
-          {status === 'success' && (
+          {status === "success" && (
             <div className="mb-8 p-6 border border-green-200 bg-green-50 flex flex-col gap-2">
-              <h3 className="font-serif text-2xl text-green-800">Application Submitted!</h3>
-              <p className="text-sm text-green-600">Thank you for applying to King Gift School. We will be in touch within 3 working days.</p>
+              <h3 className="font-serif text-2xl text-green-800">
+                Application Submitted!
+              </h3>
+              <p className="text-sm text-green-600">
+                Thank you for applying to King Gift School. We will be in touch
+                within 3 working days.
+              </p>
             </div>
           )}
 
           {/* Error Message */}
-          {status === 'error' && (
+          {status === "error" && (
             <div className="mb-8 p-6 border border-red-200 bg-red-50">
-              <p className="text-sm text-red-600">Something went wrong. Please try again or contact us directly.</p>
+              <p className="text-sm text-red-600">
+                Something went wrong. Please try again or contact us directly.
+              </p>
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
-
             {/* Row 1 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Student Full Name *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Student Full Name *
+                </label>
                 <input
                   type="text"
                   name="student_name"
@@ -141,7 +198,9 @@ const Admissions = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Email Address *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Email Address *
+                </label>
                 <input
                   type="email"
                   name="email"
@@ -157,7 +216,9 @@ const Admissions = () => {
             {/* Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Date of Birth *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Date of Birth *
+                </label>
                 <input
                   type="date"
                   name="date_of_birth"
@@ -168,7 +229,9 @@ const Admissions = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Place of Birth *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Place of Birth *
+                </label>
                 <input
                   type="text"
                   name="place_of_birth"
@@ -184,7 +247,9 @@ const Admissions = () => {
             {/* Row 3 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Home Town *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Home Town *
+                </label>
                 <input
                   type="text"
                   name="home_town"
@@ -196,7 +261,9 @@ const Admissions = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Local Government Area *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Local Government Area *
+                </label>
                 <input
                   type="text"
                   name="lga"
@@ -212,7 +279,9 @@ const Admissions = () => {
             {/* Row 4 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">State of Origin *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  State of Origin *
+                </label>
                 <input
                   type="text"
                   name="state_of_origin"
@@ -224,7 +293,9 @@ const Admissions = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Nationality *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Nationality *
+                </label>
                 <input
                   type="text"
                   name="nationality"
@@ -240,7 +311,9 @@ const Admissions = () => {
             {/* Row 5 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Present School *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Present School *
+                </label>
                 <input
                   type="text"
                   name="present_school"
@@ -252,7 +325,9 @@ const Admissions = () => {
                 />
               </div>
               <div className="flex flex-col gap-2">
-                <label className="text-xs tracking-widest uppercase text-gray-400">Present Class *</label>
+                <label className="text-xs tracking-widest uppercase text-gray-400">
+                  Present Class *
+                </label>
                 <input
                   type="text"
                   name="present_class"
@@ -268,18 +343,16 @@ const Admissions = () => {
             {/* Submit */}
             <button
               type="submit"
-              disabled={status === 'loading'}
+              disabled={status === "loading"}
               className="mt-4 w-full py-4 bg-wine text-white text-xs tracking-widest uppercase hover:bg-wine-light transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {status === 'loading' ? 'Submitting...' : 'Submit Application'}
+              {status === "loading" ? "Submitting..." : "Submit Application"}
             </button>
-
           </form>
         </div>
       </section>
-
     </div>
-  )
-}
+  );
+};
 
-export default Admissions
+export default Admissions;
