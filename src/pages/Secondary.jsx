@@ -39,7 +39,7 @@ const Secondary = () => {
       {/* Hero Banner */}
       <div className="relative w-full h-[50vh] overflow-hidden">
         <img
-          src="/src/assets/kgsStu2.jpg"
+          src={img1}
           alt="Secondary Section"
           className="w-full h-full object-cover"
         />

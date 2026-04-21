@@ -142,6 +142,9 @@ const Navbar = () => {
           >
             Sections
           </Link>
+          <Link to="/admissions" onClick={() => setIsOpen(false)} className="font-serif text-5xl font-bold tracking-wide text-cream hover:text-gold transition-colors">
+             Admissions
+          </Link>
           <Link
             to="/contact"
             onClick={() => setIsOpen(false)}
